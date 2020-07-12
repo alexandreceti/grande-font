@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //Define a URL base da origem para consumo do servico
 export default axios.create({
-  baseURL: 'https://still-brook-75941.herokuapp.com/',
+  baseURL: process.env.REACT_APP_API,
   headers: {
     'Content-type': 'application/json',
   },
