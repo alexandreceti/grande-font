@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -9,7 +9,7 @@ import GradeList from './components/GradeList';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <a href="/grade" className="navbar-brand">
@@ -29,14 +29,15 @@ function App() {
           </div>
         </nav>
         <div className="container mt-3">
-          <Switch>
-            <Route exact path={['/', '/grade']} component={GradeList} />
-            <Route exact path="/add" component={AddGrade} />
-            <Route path="/grade/:id" component={Grade} />
-          </Switch>
+          <Routes>
+            <Route index path='/' element={<GradeList />} />
+            <Route path="/add" element={<AddGrade />} />
+            <Route path="/grade/:id" element={<Grade />} />
+            <Route path="/grade" element={<GradeList />} />
+          </Routes>
         </div>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
